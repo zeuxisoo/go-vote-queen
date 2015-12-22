@@ -6,10 +6,13 @@ A console script to vote the selected target page automatically
 
 Run the script
 
+    mkdir ~/Desktop/go-vote-queen && cd $_
+    export GOPATH=~/Desktop/go-vote-queen
+
     go get github.com/zeuxisoo/go-vote-queen
 
-    $GOPATH/bin/go-vote-queen -h
-    $GOPATH/bin/go-vote-queen -k <API_KEY> -a <API_AREA>
+    ./bin/go-vote-queen -h
+    ./bin/go-vote-queen -k <API_KEY> -a <API_AREA>
 
 # Development
 
@@ -31,3 +34,13 @@ Install the dependent packages
 
     cd go-vote-queen
     go get
+
+# Build
+
+Windows
+
+    GOOS=windows GOARCH=386 go build -o go-vote-queen.exe main.go
+
+Mac
+
+    go build -o go-vote-queen main.go

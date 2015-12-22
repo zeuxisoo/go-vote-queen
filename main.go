@@ -9,6 +9,7 @@ import (
     "github.com/fatih/color"
 
     "github.com/zeuxisoo/go-vote-queen/proxy"
+    "github.com/zeuxisoo/go-vote-queen/action"
 )
 
 type Config struct {
@@ -96,6 +97,20 @@ func main() {
             return
         }
 
-        fmt.Println(xml)
+        vote := action.NewVote()
+
+        for k, v := range xml.Item {
+            color.Cyan("%d %s\n", k, v.Ip)
+
+            _, err := vote.Proxy(v.Ip).Run()
+
+            if err != nil {
+                color.Red("-- Error: %s\n", err)
+            }else{
+                color.Green("-- OK\n")
+            }
+
+            fmt.Printf("\n")
+        }
     }
 }

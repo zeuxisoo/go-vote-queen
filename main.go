@@ -7,6 +7,8 @@ import (
     "errors"
 
     "github.com/fatih/color"
+
+    "github.com/zeuxisoo/go-vote-queen/proxy"
 )
 
 type Config struct {
@@ -78,5 +80,22 @@ func main() {
         yellow := color.New(color.FgYellow).SprintFunc()
 
         fmt.Printf("\nAPI Key: %s, Area: %s\n\n", yellow(key), yellow(area))
+
+        proxy := proxy.NewProxy(key, area)
+        body, err := proxy.Get()
+
+        if err != nil {
+            fmt.Println(err)
+            return
+        }
+
+        xml, err := proxy.ParseXML(body)
+
+        if err != nil {
+            fmt.Println(err)
+            return
+        }
+
+        fmt.Println(xml)
     }
 }

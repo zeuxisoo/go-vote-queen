@@ -5,6 +5,8 @@ import (
     "fmt"
     "flag"
     "errors"
+
+    "github.com/fatih/color"
 )
 
 type Config struct {
@@ -73,6 +75,8 @@ func main() {
     if _, err := config.check(); err != nil {
         fmt.Printf("Arguments error: %s", err)
     }else{
-        fmt.Println("Hello world")
+        yellow := color.New(color.FgYellow).SprintFunc()
+
+        fmt.Printf("\nAPI Key: %s, Area: %s\n\n", yellow(key), yellow(area))
     }
 }

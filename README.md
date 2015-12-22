@@ -8,6 +8,9 @@ Run the script
 
     go get github.com/zeuxisoo/go-vote-queen
 
+    $GOPATH/bin/go-vote-queen -h
+    $GOPATH/bin/go-vote-queen -k <API_KEY> -a <API_AREA>
+
 # Development
 
 Create the project directory
